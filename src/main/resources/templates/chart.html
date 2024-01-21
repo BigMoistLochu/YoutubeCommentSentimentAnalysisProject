@@ -5,9 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wykresy </title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+
+
+    .chart{
+      max-width: 1000px;
+    }
+  </style>
 </head>
 <body>
-<div>
+<div class="chart">
   <canvas id="myPieChart" width="100" height="100"></canvas>
 </div>
 
@@ -15,12 +22,12 @@
   /*<![CDATA[*/
 
   // Pobierz dane z atrybutu data-stringListMap
-  var stringListMap = /*[[${tablica}]]*/ {};
+  const stringListMap = /*[[${tablica}]]*/ {};
 
   // Przykładowe dane - listy pozytywnych, negatywnych i neutralnych komentarzy
-  var positiveComments = stringListMap['pozytywne'];
-  var negativeComments = stringListMap['negatywne'];
-  var neutralComments = stringListMap['neutralne'];
+  const positiveComments = stringListMap['pozytywne'];
+  const negativeComments = stringListMap['negatywne'];
+  const neutralComments = stringListMap['neutralne'];
 
 
   // Funkcja do generowania danych dla wykresu
@@ -29,18 +36,18 @@
   }
 
   // Oblicz liczbę pozytywnych i negatywnych komentarzy
-  var positiveCount = positiveComments.length;
-  var negativeCount = negativeComments.length;
-  var neutralCount = neutralComments.length;
+  const positiveCount = positiveComments.length;
+  const negativeCount = negativeComments.length;
+  const neutralCount = neutralComments.length;
 
   // Pobierz element canvas
-  var ctx = document.getElementById('myPieChart').getContext('2d');
+  const ctx = document.getElementById('myPieChart').getContext('2d');
 
   // Utwórz wykres kołowy
-  var myPieChart = new Chart(ctx, {
+  const myPieChart = new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: ['Pozytywne', 'Negatywne', 'Neutralne'],
+      labels: ['Positive', 'Negative', 'Neutral'],
       datasets: [{
         data: generateChartData(positiveCount, negativeCount, neutralCount),
         backgroundColor: ['#60eb36', '#FF6384', '#434154']

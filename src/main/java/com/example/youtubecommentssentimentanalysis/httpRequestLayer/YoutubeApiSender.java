@@ -130,7 +130,7 @@ public class YoutubeApiSender {
 
     private static HttpRequest createHttpRequest(String videoID) throws URISyntaxException {
         return HttpRequest.newBuilder()
-                .uri(new URI("https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=10&textFormat=plainText&videoId="+videoID+"&fields=items&key="+DEVELOPER_KEY))
+                .uri(new URI("https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&textFormat=plainText&videoId="+videoID+"&fields=items&key="+DEVELOPER_KEY))
                 .GET()
                 .build();
     }
