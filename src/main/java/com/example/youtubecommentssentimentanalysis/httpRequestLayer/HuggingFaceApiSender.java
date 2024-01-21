@@ -22,7 +22,7 @@ public class HuggingFaceApiSender {
     
 
 
-    public static String getModel(String commentFromYT) throws URISyntaxException, IOException, InterruptedException {
+    public static String evaluateCommentByModel(String commentFromYT) throws URISyntaxException, IOException, InterruptedException {
 
 
         String requestBody = getJSON(commentFromYT);
@@ -41,7 +41,6 @@ public class HuggingFaceApiSender {
         }
 
         //konwertowanie jsona na obiekt javowy
-
         List<List<Map<String,String>>> rawResult = objectMapper.readValue(httpResponse.body(), new TypeReference<>() {});
 
 

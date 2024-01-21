@@ -1,6 +1,6 @@
 package com.example.youtubecommentssentimentanalysis.httpRequestLayer;
 
-import com.example.youtubecommentssentimentanalysis.models.ResponseModel;
+import com.example.youtubecommentssentimentanalysis.modelsDTO.ResponseModel;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -67,8 +67,6 @@ public class YoutubeApiSender {
                     }
             );
 
-            System.out.println(listOfComments);
-
             Map<String,List<String>> sentimentedCommentByModel = new HashMap<>();
             List<String> listpositive = new ArrayList<>();
             List<String> listnegative = new ArrayList<>();
@@ -77,8 +75,7 @@ public class YoutubeApiSender {
             listOfComments.stream().forEach(comment -> {
                 try {
                     String sentimentOfComment = HuggingFaceApiSender
-                            .getModel(comment);
-
+                            .evaluateCommentByModel(comment);
 
                     if(sentimentOfComment.equals("positive"))
                     {

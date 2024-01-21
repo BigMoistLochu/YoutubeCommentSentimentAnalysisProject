@@ -1,4 +1,4 @@
-package com.example.youtubecommentssentimentanalysis.models;
+package com.example.youtubecommentssentimentanalysis.modelsDTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;

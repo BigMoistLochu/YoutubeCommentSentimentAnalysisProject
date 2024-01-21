@@ -20,20 +20,16 @@ public class MainPageController {
     @GetMapping("/")
     public String getMainPage()
     {
-        //link podany przez uzytkownika bedzie przesylany przez @Requesta parama typu video=URL...
-
-        //w addAttribbiute wrzucam tablice?
-
         return "index";
     }
 
     @GetMapping("/wykres")
     public String getChart(Model model,@RequestParam(value = "filmURL") String url) throws URISyntaxException, IOException, InterruptedException {
         System.out.println(url);
-        Map<String, List<String>> listMap=  YoutubeApiSender.loadCommentsFromVideoByVideoId("https://www.youtube.com/watch?v=ZsgM-FccrC8");
-//        System.out.println("to sa komentarze pozytywne: "+listMap.get("pozytywne"));
-//        System.out.println("to sa komentarze negatywne: "+listMap.get("negatywne"));
-//        System.out.println("to sa komentarze neutralne: "+listMap.get("neutralne"));
+        Map<String, List<String>> listMap=  YoutubeApiSender.loadCommentsFromVideoByVideoId(url);
+        System.out.println("to sa komentarze pozytywne: "+listMap.get("pozytywne"));
+        System.out.println("to sa komentarze negatywne: "+listMap.get("negatywne"));
+        System.out.println("to sa komentarze neutralne: "+listMap.get("neutralne"));
 
 
         model.addAttribute("tablica",listMap);
